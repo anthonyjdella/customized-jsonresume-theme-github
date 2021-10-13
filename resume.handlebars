@@ -106,7 +106,7 @@
           {{#if resume.basics.location}}
           <li
             itemprop="homeLocation"
-            aria-label="Home location: {{resume.basics.location.city}}, {{resume.basics.location.countryCode}}"
+            aria-label="Home location: {{resume.basics.location.address}}, {{resume.basics.location.countryCode}}"
             class="vcard-detail pt-1 css-truncate css-truncate-target"
           >
             <svg
@@ -121,10 +121,10 @@
                 d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"
               />
             </svg>
-            <span>{{resume.basics.location.city}}, {{resume.basics.location.countryCode}}</span>
+            <span>{{resume.basics.location.address}}, {{resume.basics.location.countryCode}}</span>
           </li>
           {{/if}}
-          {{#if resume.basics.url}}
+          {{#if resume.basics.website}}
           <li
             itemprop="url"
             class="vcard-detail pt-1 css-truncate css-truncate-target"
@@ -141,8 +141,8 @@
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
               />
             </svg>
-            <a rel="nofollow me" href="{{resume.basics.url}}">
-              {{resume.basics.url}}
+            <a rel="nofollow me" href="{{resume.basics.website}}">
+              {{resume.basics.website}}
             </a>
           </li>
           {{/if}}
@@ -151,7 +151,7 @@
         {{#if resume.basics.profiles.length}}
         <div class="mt-3">
           <div class="border-top py-3 clearfix">
-            <h2 class="h4 d-flex flex-items-start mb-1">Elsewhere</h2>
+            <h2 class="h4 d-flex flex-items-start mb-1">Contact</h2>
             {{#each resume.basics.profiles}}
             <a
               class="State mt-1"
@@ -168,7 +168,7 @@
         {{#if resume.skills.length}}
         <div class="mt-3">
           <div class="border-top py-3 clearfix">
-            <h2 class="h4 d-flex flex-items-start mb-1">Toolkit</h2>
+            <h2 class="h4 d-flex flex-items-start mb-1">Skills <sub>(hover over)</sub></h2>
             {{#each resume.skills}}
             <span
               class="State tooltipped tooltipped-s mt-1"
@@ -213,9 +213,9 @@
               >Experiences
               <span class="Counter">{{experiencesCount resume}}</span>
             </a>
-            <a href="#writing" title="Writing" class="UnderlineNav-item"
-              >Writing
-              <span class="Counter">{{resume.publications.length}}</span>
+            <a href="#projects" title="Projects" class="UnderlineNav-item"
+              >Projects
+              <span class="Counter">{{resume.projects.length}}</span>
             </a>
           </div>
         </nav>
@@ -288,7 +288,7 @@
           </li>
         {{/pinnedExperiences}}
 
-        {{#pinnedWritings resume}}
+        {{#pinnedProjects resume}}
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div class="Box pinned-item-list-item d-flex p-3 width-full pinned-item-list-item-content">
               <div class="d-flex width-full flex-items-center position-relative">
@@ -342,7 +342,7 @@
               </p>
             </div>
           </li>
-        {{/pinnedWritings}}
+        {{/pinnedProjects}}
 
         {{#experiencesByMonth resume}}
           <div class="discussion-timeline width-full pb-4">
@@ -424,18 +424,6 @@
         {{/experiencesByMonth}}
       </div>
     </div>
-
-    <footer class="footer container-xl width-full p-responsive">
-      <div class="position-relative pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
-        <p class="mb-2">
-          Inspired by <a href="https://twitter.com/nataliemarleny">@nataliemarleny</a>. Built by <a href="github.com/sponsors/mathieudutour">@mathieudutour</a> using <a href="https://primer.style/css/">Primer</a> and <a href="https://jsonresume.org/">JSON Resume</a>.
-        </p>
-        <p class="mb-2">
-          Create your own portfolio with <a href="https://github.com/mathieudutour/jsonresume-theme-github">JSON Resume GitHub theme</a>.
-        </p>
-      </div>
-      <div class="d-flex flex-justify-center pb-6"></div>
-    </footer>
 
 	</body>
 </html>

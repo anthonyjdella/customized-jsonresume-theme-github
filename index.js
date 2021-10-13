@@ -109,7 +109,7 @@ Handlebars.registerHelper("pinnedExperiences", (resume, options) => {
         .map(x => ({
           name: x.name,
           org: x.entity,
-          date: new Date(x.startDate).getFullYear(),
+          date: new Date('2016-01-31').getFullYear(),
           summary: x.description,
           url: x.url,
           tag: "Project",
@@ -158,8 +158,8 @@ Handlebars.registerHelper("pinnedExperiences", (resume, options) => {
   return pre + pinned.map(options.fn).join("\n") + post;
 });
 
-Handlebars.registerHelper("pinnedWritings", (resume, options) => {
-  const pinned = (resume.publications || [])
+Handlebars.registerHelper("pinnedProjects", (resume, options) => {
+  const pinned = (resume.projects || [])
     .filter(x => x.pinned)
     .map(x => ({
       name: x.name,
@@ -167,7 +167,7 @@ Handlebars.registerHelper("pinnedWritings", (resume, options) => {
       date: new Date(x.releaseDate).getFullYear(),
       summary: x.summary,
       url: x.url,
-      tag: x.type || "Publication",
+      tag: x.type || "Project",
       color: "#f97583"
     }));
 
@@ -175,9 +175,9 @@ Handlebars.registerHelper("pinnedWritings", (resume, options) => {
     return options.inverse(this);
   }
 
-  const pre = `<section class="mt-4" aria-labelledby="writing">
-  <h2 id="writing" class="f4 mb-2 text-normal">
-    Pinned Writing
+  const pre = `<section class="mt-4" aria-labelledby="projects">
+  <h2 id="projects" class="f4 mb-2 text-normal">
+    Pinned Projects
   </h2>
   <ul class="d-flex flex-wrap list-style-none mb-4 gutter-condensed">`;
   const post = `  </ul>
@@ -220,8 +220,8 @@ function getExperiences(resume) {
           ...x,
           name: x.name,
           org: x.entity,
-          date: new Date(x.startDate),
-          summary: x.description,
+          date: new Date('2016-01-31'),
+          summary: x.summary,
           url: x.url,
           tag: "Project",
           color: "#fb8532"
