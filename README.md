@@ -1,6 +1,6 @@
 # Customized JSON Resume Theme: GitHub
 
-🖼️ This is a slightly tweaked version of the [GitHub theme](https://github.com/mathieudutour/jsonresume-theme-github). Tweaked to fit my design preferences.
+🖼️ This is a slightly tweaked version of the [GitHub theme](https://github.com/mathieudutour/jsonresume-theme-github). Tweaked to fit my design preferences. Published on NPM and GitHub Registry.
 
 <details>
   <summary>Click to expand README.md of the source repository!</summary>
