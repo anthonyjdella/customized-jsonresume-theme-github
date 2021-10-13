@@ -1,3 +1,11 @@
+# Customized JSON Resume Theme: GitHub
+
+🖼️ This is a slightly tweaked version of the [GitHub theme](https://github.com/mathieudutour/jsonresume-theme-github). Tweaked to fit my design preferences.
+
+<details>
+  <summary>Click to expand README.md of the source repository!</summary>
+
+
 ## JSON Resume Theme Github
 
 A JSON Resume theme looking like a GitHub profile.
@@ -52,3 +60,5 @@ Create a new repository with 2 files:
 ## License
 
 MIT
+  
+  </details>
