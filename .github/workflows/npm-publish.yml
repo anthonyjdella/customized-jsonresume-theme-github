@@ -1,23 +1,26 @@
-name: Publish NPM Package
+name: Publish Package to NPM & GitHub
 on:
   push:
     branches:
       - master
 jobs:
-  build:
+  version-increment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses:  'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: 14
-      - run: npm ci
+          commit-message: 'CI: bumps version to {{version}} [skip ci]'
 
   publish-npm-registry:
-    needs: build
+    needs: version-increment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 14
@@ -28,10 +31,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
   
   publish-github-registry:
-    needs: build
+    needs: version-increment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 14
