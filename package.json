@@ -1,24 +1,24 @@
 {
-  "name": "@anthonyjdella/jsonresume-theme-anthonyjdella-github",
-  "version": "1.0.3",
-  "description": "A theme for JSON Resume",
-  "author": "Anthony Dellavecchia",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/anthonyjdella/customized-jsonresume-theme-github"
-  },
-  "scripts": {
-    "start": "resume serve",
-    "build": "mkdir -p public && resume export public/index.html --theme \"$(pwd)\""
-  },
-  "dependencies": {
-    "@primer/css": "^14.3.0",
-    "handlebars": "^4.7.3",
-    "html-minifier": "^4.0.0",
-    "sass": "^1.26.3"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "resume-cli": "^3.0.0"
-  }
+    "name": "@anthonyjdella/jsonresume-theme-anthonyjdella-github",
+    "version": "1.0.4",
+    "description": "A theme for JSON Resume",
+    "author": "Anthony Dellavecchia",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/anthonyjdella/customized-jsonresume-theme-github"
+    },
+    "scripts": {
+        "start": "resume serve --theme .",
+        "build": "mkdir -p public && resume export public/index.html --theme \"$(pwd)\""
+    },
+    "dependencies": {
+        "@primer/css": "^14.3.0",
+        "handlebars": "^4.7.3",
+        "html-minifier": "^4.0.0",
+        "sass": "^1.26.3"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@anthonyjdella/customized-resume-cli": "^1.0.6"
+    }
 }

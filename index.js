@@ -108,9 +108,8 @@ Handlebars.registerHelper("pinnedExperiences", (resume, options) => {
         .filter(x => x.pinned)
         .map(x => ({
           name: x.name,
-          org: x.entity,
-          date: new Date('2016-01-31').getFullYear(),
-          summary: x.description,
+          date: new Date(x.startDate).getFullYear(),
+          summary: x.summary,
           url: x.url,
           tag: "Project",
           color: "#fb8532"
@@ -127,6 +126,29 @@ Handlebars.registerHelper("pinnedExperiences", (resume, options) => {
           url: x.url,
           tag: "Education",
           color: "#b392f0"
+        }))
+    )
+    .concat(
+      (resume.speaking || [])
+        .filter(x => x.pinned)
+        .map(x => ({
+          name: `${x.topic}`,
+          location: x.location,
+          date: new Date(x.date).getFullYear(),
+          url: x.reference,
+          tag: "Speaking",
+          color: "#b392f0"
+        }))
+    )
+    .concat(
+      (resume.writing || [])
+        .filter(x => x.pinned)
+        .map(x => ({
+          name: `${x.name}`,
+          date: new Date(x.date).getFullYear(),
+          url: x.reference,
+          tag: "Writing",
+          color: "#2188ff"
         }))
     )
     .concat(
@@ -160,16 +182,15 @@ Handlebars.registerHelper("pinnedExperiences", (resume, options) => {
 
 Handlebars.registerHelper("pinnedProjects", (resume, options) => {
   const pinned = (resume.projects || [])
-    .filter(x => x.pinned)
-    .map(x => ({
-      name: x.name,
-      org: x.publisher,
-      date: new Date(x.releaseDate).getFullYear(),
-      summary: x.summary,
-      url: x.url,
-      tag: x.type || "Project",
-      color: "#f97583"
-    }));
+      .filter((x) => x.pinned)
+      .map((x) => ({
+          name: x.name,
+          date: new Date(x.startDate).getFullYear(),
+          summary: x.summary,
+          url: x.url,
+          tag: x.type || "Project",
+          color: "#f97583",
+      }));
 
   if (!pinned.length) {
     return options.inverse(this);
@@ -219,8 +240,7 @@ function getExperiences(resume) {
         .map(x => ({
           ...x,
           name: x.name,
-          org: x.entity,
-          date: new Date('2016-01-31'),
+          date: new Date(x.startDate),
           summary: x.summary,
           url: x.url,
           tag: "Project",
@@ -239,6 +259,31 @@ function getExperiences(resume) {
           url: x.url,
           tag: "Education",
           color: "#b392f0"
+        }))
+    )
+    .concat(
+      (resume.speaking || [])
+        .filter(x => x.date)
+        .map(x => ({
+          ...x,
+          name: `${x.topic}`,
+          location: x.location,
+          date: new Date(x.date),
+          url: x.reference,
+          tag: "Speaking",
+          color: "#b392f0"
+        }))
+    )
+    .concat(
+      (resume.writing || [])
+        .filter(x => x.date)
+        .map(x => ({
+          ...x,
+          name: `${x.name}`,
+          date: new Date(x.date),
+          url: x.reference,
+          tag: "Writing",
+          color: "#2188ff"
         }))
     )
     .concat(
